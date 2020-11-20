@@ -930,7 +930,7 @@ else:
     print('Using default temperature=%f and density=%f'%(Temperature, Density))
 
 ###### Start timing ######
-start_time=time.clock()
+start_time=time.process_time()
 ###### Setup Simulations #######       
 asystem=system()
 asystem.setfcc()
@@ -952,7 +952,7 @@ for asystem.NStep in range(1,asystem.MaxEqb+1):
         if asystem.LScale or asystem.Lener:
             asystem.scalevel(asystem.Dener)
 
-equil_time=time.clock()
+equil_time=time.process_time()
 ###### Run Simulation #######       
 print('Starting Production run')
 asystem.resetprop()
@@ -1010,7 +1010,7 @@ if asystem.Kvel:
     asystem.velfile.close()
 
 #Print timing info
-stop_time=time.clock()
+stop_time=time.process_time()
 print("Equilibration time=%.3f minutes"%((equil_time-start_time)/60.))
 print("Production time=%.3f minutes"%((stop_time-equil_time)/60.))
 print("Total run time=%.3f minutes"%((stop_time-start_time)/60.))
